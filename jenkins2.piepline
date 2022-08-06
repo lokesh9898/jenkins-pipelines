@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Git pull Source Code') {
             steps {
-                sh 'git clone https://github.com/lokesh9898/jenkins-pipelines.git'
+                git branch: 'master', url: 'https://github.com/lokesh9898/jenkins-pipelines.git'
             }
         }
         stage ('check AWS'){
