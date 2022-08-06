@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh '''
                    aws iam create-user --user-name bob
-                   aws iam create-group --group-name developer
+                   aws iam create-group --group-name SRE
                 ''' 
             }
         }
