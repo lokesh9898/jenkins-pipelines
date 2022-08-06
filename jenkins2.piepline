@@ -3,13 +3,22 @@ pipeline {
     stages {
         stage('Git pull Source Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/lokesh9898/jenkins-pipelines.git'
+                sh 'git pull '
+                git branch: 'master', url: 'https://github.com/lokesh9898/jenkins-pipelines.git'
             }
         }
         stage ('check AWS'){
            steps {
                 sh 'aws s3 ls'
            }
+        }
+        stage ('Create IAM User') {
+            steps {
+                sh '''
+                   aws iam create-user --user-name bob
+                   aws iam create-group --group-name developer
+                ''' 
+            }
         }
     }
     post {
