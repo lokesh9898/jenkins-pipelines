@@ -3,8 +3,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'aws s3 ls'
+                sh 'git clone https://github.com/lokesh9898/jenkins-pipelines.git'
             }
+        }
+        stage ('check AWS'){
+           steps {
+                sh 'aws s3 ls'
+           }
+        }
+    }
+    post {
+        always {
+              cleanWs()
         }
     }
 }
