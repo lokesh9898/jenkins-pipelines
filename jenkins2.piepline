@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Git pull Source Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/lokesh9898/jenkins-pipelines.git'
+                git branch: 'main', url: 'https://github.com/lokesh9898/jenkins-pipelines.git'
             }
         }
         stage ('check AWS'){
