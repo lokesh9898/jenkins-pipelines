@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Git pull Source Code') {
             steps {
-                sh 'git pull '
                 git branch: 'master', url: 'https://github.com/lokesh9898/jenkins-pipelines.git'
             }
         }
