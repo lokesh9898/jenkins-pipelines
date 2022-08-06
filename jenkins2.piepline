@@ -15,9 +15,7 @@ pipeline {
         stage ('Create IAM User') {
             steps {
                 sh '''
-                   aws iam get-group --group-name developer
-                   aws iam list-users
-                   aws iam list-groups
+                   aws iam list-group-policies --group-name developer
                 ''' 
             }
         }
