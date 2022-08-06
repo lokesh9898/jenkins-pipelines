@@ -15,7 +15,6 @@ pipeline {
         stage ('Create IAM User') {
             steps {
                 sh '''
-                   aws iam delete-user --user-name bobby
                    aws iam get-group --group-name developer
                    aws iam list-users
                    aws iam list-groups
