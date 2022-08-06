@@ -15,7 +15,7 @@ pipeline {
         stage ('Remove IAM group ') {
             steps {
                 sh '''
-                   aws iam delete-group --group-name developer
+                   aws iam list-groups
                 ''' 
             }
         }
