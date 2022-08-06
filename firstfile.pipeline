@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "My first pipeline"'
+                sh '''
+                    echo "By the way, I can do more stuff in here"
+                    ls -lah
+                '''
+            }
+        }
+        stage ('GIT Clone') {
+           steps {
+               sh 'git clone https://github.com/lokesh9898/newrepo.git'
+           }
+        }   
+        stage('Test') {
+           steps {
+               sh '''
+                    touch /root/abc.txt
+                '''
+           }
+        }
+        stage ('aws Validate') {
+            steps {
+                sh 'aws configure import --csv file://newrepo/jenkins_accessKeys.csv'
+                sh 'cp /opt/build/workspace/second-pipeline/newrepo/config /root/.aws/'
+            }
+        }
+    }
+}
