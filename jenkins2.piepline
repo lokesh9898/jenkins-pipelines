@@ -15,10 +15,7 @@ pipeline {
         stage ('Remove IAM group ') {
             steps {
                 sh '''
-                   aws iam list-attached-group-policies --group-name Developer
-                   aws iam detach-group-policy --group-name Developer --policy-arn arn:aws:iam::aws:policy/AWSIoT1ClickReadOnlyAccess
-                   aws iam detach-group-policy --group-name Developer --policy-arn arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess
-                   aws iam detach-group-policy --group-name Developer --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+                   aws iam delete-group --group-name developer
                 ''' 
             }
         }
